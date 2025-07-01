@@ -10,7 +10,7 @@ import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import DashboardRoundedIcon from '@mui/icons-material/DashboardRounded';
 import SideMenuMobile from '../side-menu/SideMenuMobile';
 import MenuButton from '../common/MenuButton';
-import ColorModeIconDropdown from '../../../../../src/pages/shared-theme/ColorModeIconDropdown';
+import ColorModeIconDropdown from '../../../../pages/shared-theme/ColorModeIconDropdown';
 
 const Toolbar = styled(MuiToolbar)({
   width: '100%',
@@ -63,16 +63,21 @@ export default function NavbarMenu() {
             spacing={1}
             sx={{ justifyContent: 'center', mr: 'auto' }}
           >
+            {/* Icono de menu MenuMobile */}
             <CustomIcon />
             <Typography variant="h4" component="h1" sx={{ color: 'text.primary' }}>
               Dashboard
             </Typography>
           </Stack>
+
           <ColorModeIconDropdown />
+
           <MenuButton aria-label="menu" onClick={toggleDrawer(true)}>
             <MenuRoundedIcon />
           </MenuButton>
+
           <SideMenuMobile open={open} toggleDrawer={toggleDrawer} />
+
         </Stack>
       </Toolbar>
     </AppBar>

@@ -14,6 +14,7 @@ import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import DevicesRoundedIcon from '@mui/icons-material/DevicesRounded';
 import SmartphoneRoundedIcon from '@mui/icons-material/SmartphoneRounded';
 import ConstructionRoundedIcon from '@mui/icons-material/ConstructionRounded';
+import { MpAvatar, MpIcon } from '../../../../components/customIcons/MpIcon';
 
 const Avatar = styled(MuiAvatar)(({ theme }) => ({
   width: 28,
@@ -61,7 +62,9 @@ export default function SelectContent() {
         <Box display="flex" alignItems="center">
           <ListItemAvatar>
             <Avatar alt="SistemsMP web">
-              <DevicesRoundedIcon sx={{ fontSize: '1rem' }} />
+              {/* <DevicesRoundedIcon sx={{ fontSize: '1rem' }} /> */}
+              {/* <MpIcon /> */}
+              <MpAvatar />
             </Avatar>
           </ListItemAvatar>
           <ListItemText primary="SistemsMP-web" secondary="Web app" />

@@ -6,6 +6,14 @@
   <a href="https://vitejs.dev/" target="_blank">
     <img src="https://vitejs.dev/logo.svg" width="100" alt="Vite Logo" />
   </a>
+  &nbsp;&nbsp;&nbsp;
+  <a href="https://mui.com/" target="_blank">
+    <img
+      src="https://mui.com/static/logo.png"
+      alt="Material-UI Logo"
+      width="100"
+    />
+  </a>
 </p>
 
 ## Stack usado
@@ -14,9 +22,12 @@
 
 *Vite
 
+*Material UI
+
 ## Ejecutar en modo dev.
 
-* Instalar las dependencias:
+- Instalar las dependencias:
+
 ```bash
 #Instalar dependencias
 $ npm install
@@ -27,8 +38,8 @@ $ npm install
 $ npm run dev
 ```
 
-
 # Construir y ejecutar para producción
+
 ```bash
 # Construir
 $ npm run build
@@ -40,4 +51,5 @@ $ npm run start
 <br>
 
 ## Url:
+
 http://localhost:5173/

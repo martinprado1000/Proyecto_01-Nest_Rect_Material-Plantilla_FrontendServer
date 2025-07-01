@@ -1,16 +1,22 @@
-// src/layouts/PrivateLayout.tsx
 import React from "react";
-import SideMenu from "../pages/layouts/menu/side-menu/SideMenu"; // Ajustá el path
+import SideMenu from "../pages/layouts/menu/side-menu/SideMenu";
 import { Outlet } from "react-router-dom";
 import Box from "@mui/material/Box";
+import NavbarMenu from "../pages/layouts/menu/navbar-menu/NavbarMenu";
+import AppTheme from "../pages/shared-theme/AppTheme";
+import CssBaseline from "@mui/material/CssBaseline";
 
 export const TypeMenuRoute = () => {
   return (
-    <Box sx={{ display: "flex" }}>
-      <SideMenu />
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <Outlet />
+    <AppTheme> {/* Envuelve todo en AppTheme */}
+      <CssBaseline enableColorScheme />
+      <Box sx={{ display: "flex" }}>
+        <NavbarMenu />
+        <SideMenu />
+        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <Outlet />
+        </Box>
       </Box>
-    </Box>
+    </AppTheme>
   );
 };

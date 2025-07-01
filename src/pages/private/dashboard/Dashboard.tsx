@@ -44,12 +44,12 @@ export default function Dashboard(props: { disableCustomTheme?: boolean }) {
     <AppTheme {...props} themeComponents={xThemeComponents}>
       <CssBaseline enableColorScheme />
       <Box sx={{ display: "flex" }}>
+
         {/* -------- Menu lateral -------------------------------------------------------------------------------------- */}
-        <SideMenu />
+        {/* <SideMenu /> */}  {/* Se carga desde app */} 
 
         {/* -------- Menu responsivo ----------------------------------------------------------------------------------- */}
-        <NavbarMenu />
-        {/* Main content */}
+        {/* <NavbarMenu /> */}  {/* Se carga desde app */} 
 
         <Box
           component="main"

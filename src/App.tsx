@@ -18,7 +18,7 @@ import { ErrorPage } from "./pages/public/error-page/ErrorPage.jsx";
 import { FatalErrorPage } from "./pages/public/fatal-error-page/FatalErrorPage.jsx";
 import { TestPage } from "./pages/public/test-page/TestPage.jsx";
 import { RolesEnum } from "./contexts/interfaces/users.interfaces";
-
+import { TypeMenuRoute } from "./protectedRoute/TypeMenuRoute";
 
 const SuspendedDashboard = (
   <Suspense fallback={<DashboardLoading />}>
@@ -66,17 +66,25 @@ const router = createBrowserRouter(
           // ],
           // USANDO LA FUNCION SuspendedDashboard PUEDO RESUMIR EL CODIGO DE ARRIBA DE LA SIGUIENTE MANERA
           children: [
-            { path: "/", element: SuspendedDashboard },
-            { path: "/home", element: SuspendedDashboard },
-            { path: "/dashboard", element: SuspendedDashboard },
-            { path: "/profile", element: <Profile /> },
+            {
+              element: <TypeMenuRoute />,
+              children: [
+                { path: "/", element: SuspendedDashboard },
+                { path: "/home", element: SuspendedDashboard },
+                { path: "/dashboard", element: SuspendedDashboard },
+                { path: "/profile", element: <Profile /> },
+              ],
+            },
           ],
         },
         // Rutas protegidas para ADMIN
         {
           element: <ProtectedRoute role={RolesEnum.ADMIN} />,
           children: [
-            { path: "/users", element: <Users /> },
+            {
+              element: <TypeMenuRoute />,
+              children: [{ path: "/users", element: <Users /> }],
+            },
           ],
         },
         // Otras rutas (públicas)
