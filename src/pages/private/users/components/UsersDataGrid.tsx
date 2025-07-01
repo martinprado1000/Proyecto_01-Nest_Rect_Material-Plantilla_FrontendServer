@@ -177,9 +177,8 @@ export default function UsersDataGrid() {
 
     if (result.isConfirmed) {
       const res = await actionUser(ActionUserEnum.delete, undefined, id);
-      console.log(res);
       
-      if (res.error) {
+      if (res?.error) {
         Swal.fire({
           title: res.message,
           icon: "error",
