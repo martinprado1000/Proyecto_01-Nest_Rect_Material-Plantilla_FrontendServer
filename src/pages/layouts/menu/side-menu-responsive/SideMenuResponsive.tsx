@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 //import MuiDrawer from "@mui/material/Drawer";
@@ -15,7 +16,6 @@ import { MenuContent, MenuContentCompact } from "../common/MenuContent";
 
 import CardAlert from "../common/CardAlert";
 import { UserStackContainer } from "./components/UserStackContainer";
-import { Typography } from "@mui/material";
 
 const drawerWidth = 240;
 

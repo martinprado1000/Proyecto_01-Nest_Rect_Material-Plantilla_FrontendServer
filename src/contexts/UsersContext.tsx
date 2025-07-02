@@ -60,7 +60,7 @@ export function UsersProvider({ children }: UsersProviderPropsType) {
     try {
       switch (action) {
         case ActionUserEnum.get: {
-          res = await fetch(`${URL_BACK}/api/users/?limit=100`, {
+          res = await fetch(`${URL_BACK}/api/users/allUsers/?limit=100`, {
             headers: {
               "Content-Type": "application/json",
             },

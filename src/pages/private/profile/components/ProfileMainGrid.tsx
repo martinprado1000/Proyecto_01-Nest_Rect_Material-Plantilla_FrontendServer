@@ -4,7 +4,6 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 
 import Copyright from "../../../../components/customIcons/Copyright"
-
 import ProfileDataGrid from "./ProfileDataGrid";
 
 export default function ProfileMainGrid() {

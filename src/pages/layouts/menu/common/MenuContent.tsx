@@ -15,6 +15,7 @@ import AssignmentRoundedIcon from "@mui/icons-material/AssignmentRounded";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
 import HelpRoundedIcon from "@mui/icons-material/HelpRounded";
+
 import { useAuthContext } from "../../../../contexts/AuthUserContext";
 import { RolesEnum } from "../../../../contexts/interfaces/users.interfaces";
 
@@ -34,12 +35,6 @@ const mainListItems = [
 ];
 
 const secondaryListItemsAdmin = [
-  { text: "Settings", icon: <SettingsRoundedIcon /> },
-  { text: "About", icon: <InfoRoundedIcon /> },
-  { text: "Feedback", icon: <HelpRoundedIcon /> },
-];
-
-const secondaryListItems = [
   { text: "Settings", icon: <SettingsRoundedIcon /> },
   { text: "About", icon: <InfoRoundedIcon /> },
   { text: "Feedback", icon: <HelpRoundedIcon /> },

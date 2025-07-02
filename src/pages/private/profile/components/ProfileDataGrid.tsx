@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useForm, Controller } from "react-hook-form";
+
 import {
   Stack,
   Typography,
@@ -15,7 +17,6 @@ import {
 import FormLabel from "@mui/material/FormLabel";
 import FormControl from "@mui/material/FormControl";
 import Autocomplete from "@mui/material/Autocomplete";
-import { useForm, Controller } from "react-hook-form";
 
 //Sweet Alert 2
 import Swal from "sweetalert2";
@@ -134,7 +135,7 @@ function AccountDetailsForm({ userAuth }: { userAuth: UserAuthType }) {
       console.log(res);
       if (res.error) {
         Swal.fire({
-          title: res.error,
+          title: res.message,
           icon: "warning",
           timer: 6000,
           timerProgressBar: true,
@@ -311,42 +312,46 @@ function AccountDetailsForm({ userAuth }: { userAuth: UserAuthType }) {
             </Typography>
           )}
         </FormControl>
-<FormControl>
-  <FormLabel htmlFor="roles">Role</FormLabel>
-  <Controller
-    name="roles"
-    control={control}
-    rules={{
-      required: {
-        value: true,
-        message: "El campo rol es requerido",
-      },
-    }}
-    render={({ field }) => (
-      <Autocomplete
-        options={roles}
-        getOptionLabel={(option) => String(option)}
-        value={field.value ?? null}
-        onChange={(_, newValue) => field.onChange(newValue)}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            placeholder="Selecciona un rol"
-            error={!!errors.roles}
-          />
+        {userAuth.roles?.includes(RolesEnum.SUPERADMIN) && (
+          <FormControl>
+            <FormLabel htmlFor="roles">Role</FormLabel>
+            <Controller
+              name="roles"
+              control={control}
+              rules={{
+                required: {
+                  value: true,
+                  message: "El campo rol es requerido",
+                },
+              }}
+              render={({ field }) => (
+                <Autocomplete
+                  options={roles}
+                  getOptionLabel={(option) => String(option)}
+                  value={field.value ?? null}
+                  onChange={(_, newValue) => field.onChange(newValue)}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      placeholder="Seleccioná un rol"
+                      error={!!errors.roles}
+                    />
+                  )}
+                />
+              )}
+            />
+            {errors.roles && (
+              <Typography sx={{ color: "#dc3545" }}>
+                {errors.roles.message}
+              </Typography>
+            )}
+          </FormControl>
         )}
-      />
-    )}
-  />
-  {errors.roles && (
-    <Typography sx={{ color: "#dc3545" }}>{errors.roles.message}</Typography>
-  )}
-</FormControl>
 
         {/* <FormControlLabel
                     control={<Checkbox value="allowExtraEmails" color="primary" />}
                     label="I want to receive updates via email."
-                  /> */}
+        /> */}
         <Button
           type="submit"
           fullWidth

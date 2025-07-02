@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import MuiAvatar from '@mui/material/Avatar';
 import MuiListItemAvatar from '@mui/material/ListItemAvatar';
 import MenuItem from '@mui/material/MenuItem';
@@ -9,11 +10,11 @@ import Select, { SelectChangeEvent, selectClasses } from '@mui/material/Select';
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
-
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import DevicesRoundedIcon from '@mui/icons-material/DevicesRounded';
 import SmartphoneRoundedIcon from '@mui/icons-material/SmartphoneRounded';
 import ConstructionRoundedIcon from '@mui/icons-material/ConstructionRounded';
+
 import { MpAvatar, MpIcon } from '../../../../components/customIcons/MpIcon';
 
 const Avatar = styled(MuiAvatar)(({ theme }) => ({

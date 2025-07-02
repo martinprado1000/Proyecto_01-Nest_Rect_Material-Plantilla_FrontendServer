@@ -6,7 +6,7 @@ import NavbarMenu from "../pages/layouts/menu/navbar-menu/NavbarMenu";
 import AppTheme from "../pages/shared-theme/AppTheme";
 import CssBaseline from "@mui/material/CssBaseline";
 
-export const TypeMenuRoute = () => {
+export const MenuRoute = () => {
   return (
     <AppTheme> {/* Envuelve todo en AppTheme */}
       <CssBaseline enableColorScheme />

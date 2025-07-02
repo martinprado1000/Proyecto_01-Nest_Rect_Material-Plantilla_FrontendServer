@@ -1,4 +1,4 @@
-// Definir tipos para las acciones
+// Tipos para las acciones
 export enum ActionUserEnum {
   get = 'get',
   getByTerm = 'getByTerm',
@@ -32,7 +32,7 @@ export interface UserType {
   password?: string;
   confirmPassword?: string;
   isNew?: boolean;
-  isActive?: boolean;
+  isActive?: boolean | "Activo" | "Inactivo";  // Agrego "Activo" e "Inactivo" como tipo porque eso es lo que retorna el formulario.
 }
 
 export interface ApiErrorType {

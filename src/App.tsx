@@ -7,6 +7,7 @@ import { UsersProvider } from "./contexts/UsersContext";
 
 import { ProtectedRoute } from "./protectedRoute/ProtectedRoute";
 import { SessionRoute } from "./protectedRoute/SessionRoute";
+import { MenuRoute } from "./protectedRoute/MenuRoute";
 
 import { DashboardLoading } from "./components/dashboard-loading/DashboardLoading";
 const Dashboard = lazy(() => import("./pages/private/dashboard/Dashboard")); // Lo importo de esta manera porque tiene lazy loading.
@@ -18,7 +19,6 @@ import { ErrorPage } from "./pages/public/error-page/ErrorPage.jsx";
 import { FatalErrorPage } from "./pages/public/fatal-error-page/FatalErrorPage.jsx";
 import { TestPage } from "./pages/public/test-page/TestPage.jsx";
 import { RolesEnum } from "./contexts/interfaces/users.interfaces";
-import { TypeMenuRoute } from "./protectedRoute/TypeMenuRoute";
 
 const SuspendedDashboard = (
   <Suspense fallback={<DashboardLoading />}>
@@ -40,7 +40,8 @@ const router = createBrowserRouter(
         </AuthUserProvider>
       ),
       children: [
-        // Rutas de sesión (públicas)
+        
+        // Rutas sin sesión (públicas)
         {
           element: <SessionRoute />,
           children: [
@@ -48,7 +49,8 @@ const router = createBrowserRouter(
             { path: "/sign-up", element: <SignUp /> },
           ],
         },
-        // Rutas protegidas para USER
+
+        // Rutas protegidas: solo usuario logeados y cualquier rol de usuario.
         {
           element: <ProtectedRoute role={RolesEnum.USER} />,
           // children: [
@@ -67,7 +69,7 @@ const router = createBrowserRouter(
           // USANDO LA FUNCION SuspendedDashboard PUEDO RESUMIR EL CODIGO DE ARRIBA DE LA SIGUIENTE MANERA
           children: [
             {
-              element: <TypeMenuRoute />,
+              element: <MenuRoute />, // 
               children: [
                 { path: "/", element: SuspendedDashboard },
                 { path: "/home", element: SuspendedDashboard },
@@ -77,22 +79,25 @@ const router = createBrowserRouter(
             },
           ],
         },
-        // Rutas protegidas para ADMIN
+
+        // Rutas protegidas: solo usuario logeados y con rol: ADMIN y SUPERADMIN
         {
           element: <ProtectedRoute role={RolesEnum.ADMIN} />,
           children: [
             {
-              element: <TypeMenuRoute />,
+              element: <MenuRoute />,
               children: [{ path: "/users", element: <Users /> }],
             },
           ],
         },
-        // Otras rutas (públicas)
+
+        // Rutas publicas
         { path: "/errorPage", element: <ErrorPage /> },
         { path: "/fatalErrorPage", element: <FatalErrorPage /> },
         { path: "/testpage", element: <TestPage /> },
         { path: "*", element: <ErrorPage /> }, // 404
       ],
+      
       errorElement: <ErrorPage />, // Manejo global de errores
     },
   ]

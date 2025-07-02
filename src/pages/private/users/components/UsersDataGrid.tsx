@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import {
   GridRowModes,
   DataGrid,
@@ -19,6 +20,9 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import SaveIcon from "@mui/icons-material/Save";
 import CancelIcon from "@mui/icons-material/Close";
+import { Chip, Select, Stack } from "@mui/material";
+import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
+import ErrorRoundedIcon from "@mui/icons-material/ErrorRounded";
 import Tooltip, { tooltipClasses, TooltipProps } from "@mui/material/Tooltip";
 import { styled } from "@mui/material/styles";
 import { GridColDef } from "@mui/x-data-grid";
@@ -41,7 +45,7 @@ import {
   validatePasswordFn,
 } from "./ValidationsDataGrid";
 
-// Tipar las props del EditToolbar
+// Type props del EditToolbar
 interface EditToolbarProps {
   setRows: React.Dispatch<React.SetStateAction<UserType[]>>;
   setRowModesModel: React.Dispatch<React.SetStateAction<Record<string, any>>>;
@@ -64,8 +68,9 @@ function EditToolbar(props: EditToolbarProps) {
         id,
         name: "",
         lastname: "",
-        roles: RolesEnum.USER,
         email: "",
+        roles: RolesEnum.USER,
+        isActive: true,
         isNew: true,
       },
     ]);
@@ -177,7 +182,7 @@ export default function UsersDataGrid() {
 
     if (result.isConfirmed) {
       const res = await actionUser(ActionUserEnum.delete, undefined, id);
-      
+
       if (res?.error) {
         Swal.fire({
           title: res.message,
@@ -200,6 +205,9 @@ export default function UsersDataGrid() {
   };
 
   const processRowUpdate = async (user: UserType) => {
+    if (user.isActive === "Activo") user.isActive = true;
+    if (user.isActive === "Inactivo") user.isActive = false;
+
     let res;
     if (user.isNew) {
       // NUEVO USUARIO ---------------------------------------------------------------------.
@@ -249,15 +257,16 @@ export default function UsersDataGrid() {
         });
         if (!result.isConfirmed) return;
       }
-      console.log(userAuth);
+      
       if (user.password == "") {
         delete user.password;
         delete user.confirmPassword;
       } else {
         user.confirmPassword = user.password;
       }
+      
       res = await actionUser(ActionUserEnum.edit, user, user.id);
-
+      
       if (res.error) {
         Swal.fire({
           title: res.message,
@@ -369,6 +378,70 @@ export default function UsersDataGrid() {
       type: "singleSelect",
       valueOptions: roles,
     },
+{
+  field: "isActive",
+  headerName: "Status",
+  editable: true,
+  flex: 1,
+  minWidth: 100,
+  type: "singleSelect",
+  valueOptions: [
+    { value: true, label: "Activo" },
+    { value: false, label: "Inactivo" },
+  ],
+  renderCell: (params) => {
+    const value = params.value;
+
+    return (
+      <Stack
+        direction="row"
+        alignItems="center"
+        justifyContent="left"
+        sx={{ width: "100%", height: "100%" }}
+      >
+        {value === true ? (
+          <Chip
+            icon={
+              <CheckCircleRoundedIcon
+                sx={{ fontSize: 22, marginLeft: "4px" }}
+              />
+            }
+            label="Activo"
+            color="success"
+            variant="outlined"
+            sx={{
+              height: 32,
+              fontSize: "0.9rem",
+              fontWeight: 500,
+              "& .MuiChip-icon": {
+                fontSize: 20,
+              },
+            }}
+          />
+        ) : (
+          <Chip
+            icon={
+              <ErrorRoundedIcon
+                sx={{ fontSize: 22, marginLeft: "4px" }}
+              />
+            }
+            label="Inactivo"
+            color="error"
+            variant="outlined"
+            sx={{
+              height: 32,
+              fontSize: "0.9rem",
+              fontWeight: 500,
+              "& .MuiChip-icon": {
+                fontSize: 20,
+              },
+            }}
+          />
+        )}
+      </Stack>
+    );
+  },
+},
     {
       field: "actions",
       type: "actions",

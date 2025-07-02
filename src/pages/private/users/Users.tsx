@@ -8,9 +8,9 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 
+// import SideMenu from "../../layouts/menu/side-menu/SideMenu";
+// import NavbarMenu from "../../layouts/menu/navbar-menu/NavbarMenu";
 import Header from "../../layouts/header/Header";
-import SideMenu from "../../layouts/menu/side-menu/SideMenu";
-import NavbarMenu from "../../layouts/menu/navbar-menu/NavbarMenu";
 import AppTheme from "../../shared-theme/AppTheme";
 import UsersMainGrid from "./components/UsersMainGrid";
 import {
@@ -18,7 +18,7 @@ import {
   dataGridCustomizations,
   datePickersCustomizations,
   treeViewCustomizations,
-} from "./theme/customizations";
+} from "../theme/customizations";
 
 const xThemeComponents = {
   ...chartsCustomizations,

@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import { SvgIcon, SvgIconProps, Box, Typography } from "@mui/material";
 
 export function MpAvatar() {
