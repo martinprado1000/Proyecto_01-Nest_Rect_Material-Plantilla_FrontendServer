@@ -137,6 +137,9 @@ export default function UsersDataGrid() {
     }
   }, [users]);
 
+  let valueOptionsRoles: RolesEnum[];
+  userAuth?.roles?.includes(RolesEnum.SUPERADMIN) ? valueOptionsRoles = roles : valueOptionsRoles = [RolesEnum.USER, RolesEnum.OPERATOR];
+
   const validateName = validateNameFn(rows);
   const validateLastname = validateLastnameFn(rows);
   const validateEmail = validateEmailFn(rows);
@@ -257,16 +260,16 @@ export default function UsersDataGrid() {
         });
         if (!result.isConfirmed) return;
       }
-      
+
       if (user.password == "") {
         delete user.password;
         delete user.confirmPassword;
       } else {
         user.confirmPassword = user.password;
       }
-      
+
       res = await actionUser(ActionUserEnum.edit, user, user.id);
-      
+
       if (res.error) {
         Swal.fire({
           title: res.message,
@@ -376,72 +379,70 @@ export default function UsersDataGrid() {
       flex: 1,
       minWidth: 100,
       type: "singleSelect",
-      valueOptions: roles,
+      valueOptions: valueOptionsRoles,
     },
-{
-  field: "isActive",
-  headerName: "Status",
-  editable: true,
-  flex: 1,
-  minWidth: 100,
-  type: "singleSelect",
-  valueOptions: [
-    { value: true, label: "Activo" },
-    { value: false, label: "Inactivo" },
-  ],
-  renderCell: (params) => {
-    const value = params.value;
+    {
+      field: "isActive",
+      headerName: "Status",
+      editable: true,
+      flex: 1,
+      minWidth: 100,
+      type: "singleSelect",
+      valueOptions: [
+        { value: true, label: "Activo" },
+        { value: false, label: "Inactivo" },
+      ],
+      renderCell: (params) => {
+        const value = params.value;
 
-    return (
-      <Stack
-        direction="row"
-        alignItems="center"
-        justifyContent="left"
-        sx={{ width: "100%", height: "100%" }}
-      >
-        {value === true ? (
-          <Chip
-            icon={
-              <CheckCircleRoundedIcon
-                sx={{ fontSize: 22, marginLeft: "4px" }}
+        return (
+          <Stack
+            direction="row"
+            alignItems="center"
+            justifyContent="left"
+            sx={{ width: "100%", height: "100%" }}
+          >
+            {value === true ? (
+              <Chip
+                icon={
+                  <CheckCircleRoundedIcon
+                    sx={{ fontSize: 22, marginLeft: "4px" }}
+                  />
+                }
+                label="Activo"
+                color="success"
+                variant="outlined"
+                sx={{
+                  height: 32,
+                  fontSize: "0.9rem",
+                  fontWeight: 500,
+                  "& .MuiChip-icon": {
+                    fontSize: 20,
+                  },
+                }}
               />
-            }
-            label="Activo"
-            color="success"
-            variant="outlined"
-            sx={{
-              height: 32,
-              fontSize: "0.9rem",
-              fontWeight: 500,
-              "& .MuiChip-icon": {
-                fontSize: 20,
-              },
-            }}
-          />
-        ) : (
-          <Chip
-            icon={
-              <ErrorRoundedIcon
-                sx={{ fontSize: 22, marginLeft: "4px" }}
+            ) : (
+              <Chip
+                icon={
+                  <ErrorRoundedIcon sx={{ fontSize: 22, marginLeft: "4px" }} />
+                }
+                label="Inactivo"
+                color="error"
+                variant="outlined"
+                sx={{
+                  height: 32,
+                  fontSize: "0.9rem",
+                  fontWeight: 500,
+                  "& .MuiChip-icon": {
+                    fontSize: 20,
+                  },
+                }}
               />
-            }
-            label="Inactivo"
-            color="error"
-            variant="outlined"
-            sx={{
-              height: 32,
-              fontSize: "0.9rem",
-              fontWeight: 500,
-              "& .MuiChip-icon": {
-                fontSize: 20,
-              },
-            }}
-          />
-        )}
-      </Stack>
-    );
-  },
-},
+            )}
+          </Stack>
+        );
+      },
+    },
     {
       field: "actions",
       type: "actions",
