@@ -13,6 +13,7 @@ export default function ColorModeSelect(props: SelectProps) {
       value={mode}
       onChange={(event) =>
         setMode(event.target.value as 'system' | 'light' | 'dark')
+        //setMode(event.target.value as 'system' | 'dark')
       }
       SelectDisplayProps={{
         // @ts-ignore
@@ -20,7 +21,7 @@ export default function ColorModeSelect(props: SelectProps) {
       }}
       {...props}
     >
-      {/* <MenuItem value="system">System</MenuItem> */}
+      <MenuItem hidden value="system">Dark</MenuItem>
       <MenuItem value="light">Light</MenuItem>
       <MenuItem value="dark">Dark</MenuItem>
     </Select>

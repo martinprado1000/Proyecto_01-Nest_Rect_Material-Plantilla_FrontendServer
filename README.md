@@ -37,6 +37,10 @@ $ npm install
 #Ejecutar en desarrollo
 $ npm run dev
 ```
+```bash
+#Ejecutar en desarrollo accesible desde cualquier host.
+$ npm run dev -- --host
+```
 
 # Construir y ejecutar para producción
 

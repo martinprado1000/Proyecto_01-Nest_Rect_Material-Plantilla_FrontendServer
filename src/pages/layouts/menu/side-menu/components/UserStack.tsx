@@ -26,7 +26,14 @@ export function UserStack() {
       <Box sx={{ mr: "auto" }}>
         <Typography
           variant="body2"
-          sx={{ fontWeight: 500, lineHeight: "16px" }}
+          sx={{
+            fontWeight: 500,
+            lineHeight: "16px",
+            maxWidth: 120,
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis", // Agrega 3 puntos al final del texto si no entra.
+          }}
         >
           {userAuth?.name}
         </Typography>
@@ -37,9 +44,6 @@ export function UserStack() {
 
       {/* **** Options menu User **** **/}
       <OptionsMenuUser />
-
     </Stack>
   );
 }
-
-

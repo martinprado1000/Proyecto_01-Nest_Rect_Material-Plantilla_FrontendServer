@@ -18,7 +18,7 @@ export default function Copyright(props: any) {
     >
       {'Copyright © '}
       <Link color="inherit" href="">
-        SistemsMP
+        SystemsMP
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}

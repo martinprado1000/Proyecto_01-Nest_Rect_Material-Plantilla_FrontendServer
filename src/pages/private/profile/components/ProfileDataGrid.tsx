@@ -113,8 +113,6 @@ function AccountDetailsForm({ userAuth }: { userAuth: UserAuthType }) {
       navigate("/sign-in");
       throw new Error("No profile, you should log in.");
     }
-    console.log(data);
-    console.log(formData);
 
     const result = await Swal.fire({
       title: "Editando perfil",
@@ -132,7 +130,6 @@ function AccountDetailsForm({ userAuth }: { userAuth: UserAuthType }) {
         delete data.confirmPassword;
       }
       const res = await actionUser(ActionUserEnum.edit, data, formData.id);
-      console.log(res);
       if (res.error) {
         Swal.fire({
           title: res.message,

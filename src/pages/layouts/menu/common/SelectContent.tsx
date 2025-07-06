@@ -62,35 +62,35 @@ export default function SelectContent() {
       <MenuItem value="">
         <Box display="flex" alignItems="center">
           <ListItemAvatar>
-            <Avatar alt="SistemsMP web">
+            <Avatar alt="SystemsMP web">
               {/* <DevicesRoundedIcon sx={{ fontSize: '1rem' }} /> */}
               {/* <MpIcon /> */}
               <MpAvatar />
             </Avatar>
           </ListItemAvatar>
-          <ListItemText primary="SistemsMP-web" secondary="Web app" />
+          <ListItemText primary="SystemsMP-web" secondary="Web app" />
         </Box>
       </MenuItem>
 
       <MenuItem value={10}>
         <Box display="flex" alignItems="center">
           <ListItemAvatar>
-            <Avatar alt="SistemsMP App">
+            <Avatar alt="SystemsMP App">
               <SmartphoneRoundedIcon sx={{ fontSize: '1rem' }} />
             </Avatar>
           </ListItemAvatar>
-          <ListItemText primary="SistemsMP-app" secondary="Mobile application" />
+          <ListItemText primary="SystemsMP-app" secondary="Mobile application" />
         </Box>
       </MenuItem>
 
       <MenuItem value={20}>
         <Box display="flex" alignItems="center">
           <ListItemAvatar>
-            <Avatar alt="SistemsMP Store">
+            <Avatar alt="SystemsMP Store">
               <DevicesRoundedIcon sx={{ fontSize: '1rem' }} />
             </Avatar>
           </ListItemAvatar>
-          <ListItemText primary="SistemsMP-Store" secondary="Web app" />
+          <ListItemText primary="SystemsMP-Store" secondary="Web app" />
         </Box>
       </MenuItem>
 
@@ -99,11 +99,11 @@ export default function SelectContent() {
       <MenuItem value={30}>
         <Box display="flex" alignItems="center">
           <ListItemAvatar>
-            <Avatar alt="SistemsMP Admin">
+            <Avatar alt="SystemsMP Admin">
               <ConstructionRoundedIcon sx={{ fontSize: '1rem' }} />
             </Avatar>
           </ListItemAvatar>
-          <ListItemText primary="SistemsMP-Admin" secondary="Web app" />
+          <ListItemText primary="SystemsMP-Admin" secondary="Web app" />
         </Box>
       </MenuItem>
 

@@ -66,7 +66,7 @@ export function MpIcon() {
           fontWeight: "bold",
         }}
       >
-        SistemsMP
+        SystemsMP
       </Typography>
     </Box>
   );
