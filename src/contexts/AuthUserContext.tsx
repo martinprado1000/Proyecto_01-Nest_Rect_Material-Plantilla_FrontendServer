@@ -70,7 +70,6 @@ export function AuthUserProvider({ children }: AuthUsersProviderPropsType ) {
     }
 
     const responsBackend = await res.json(); //Transformo a JSON la respuesta
-    console.log(responsBackend)
     if (res.status !== 201 && res.status !== 200) { // Usuario no registrado
       setIsAuth(false);
       setUserAuth(null);
